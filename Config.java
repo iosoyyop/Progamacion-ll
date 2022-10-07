@@ -11,7 +11,7 @@ public class Config {
     public static final Color COLOR_SUN = Color.YELLOW;
     public static final Color COLOR_OVNI = Color.PINK;
     public static final Color COLOR_OVNI2 = Color.GRAY;
-    public static final int SUN_SIZE = 30;
+    public static final int SUN_SIZE = 50;
     public static final int SUN_STEP = 5;
     public static final int OVNI_W = 80;
     public static final int OVNI_H = 20;

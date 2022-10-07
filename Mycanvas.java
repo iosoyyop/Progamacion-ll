@@ -10,6 +10,8 @@ class Mycanvas extends JPanel implements KeyListener, ActionListener {
     public Mycanvas() {
         setPreferredSize(new Dimension(Config.WINDOW_W, Config.WINDOW_H));
         setBackground(Config.COLOR_BG);
+        Timer timer = new Timer(100,this);
+        timer.start();
     }
 
     @Override
@@ -28,7 +30,7 @@ class Mycanvas extends JPanel implements KeyListener, ActionListener {
         painbrush.drawTree(340, 80);
         painbrush.drawTree(260, 115);
         painbrush.drawTree(200, 150);
-        //painbrush.drawVehicle(pOvni1,pOvni2);
+        painbrush.drawVehicle(pOvni1,pOvni2);
         painbrush.drawVehicle();
         painbrush.drawSun(pSun);
     }
@@ -58,6 +60,13 @@ class Mycanvas extends JPanel implements KeyListener, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        int x= pSun.getX();
+        x=x+1;
+        pSun.setX(x);
+        int y= pSun.getY();
+        y=y+1;
+        pSun.setY(y);
+        repaint();
     }
 
     @Override
