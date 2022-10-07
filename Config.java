@@ -9,8 +9,8 @@ public class Config {
     public static final Color COLOR_TRUNK_TREE = new Color(50, 27, 30);
     public static final Color COLOR_TREE = new Color(16, 46, 60);
     public static final Color COLOR_SUN = Color.YELLOW;
-    public static final Color COLOR_OVNI = Color.GRAY;
-    public static final Color COLOR_OVNI2 = Color.WHITE;
+    public static final Color COLOR_OVNI = Color.PINK;
+    public static final Color COLOR_OVNI2 = Color.GRAY;
     public static final int SUN_SIZE = 30;
     public static final int SUN_STEP = 5;
     public static final int OVNI_W = 80;
