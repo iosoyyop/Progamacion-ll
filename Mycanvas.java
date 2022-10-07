@@ -28,8 +28,8 @@ class Mycanvas extends JPanel implements KeyListener, ActionListener {
         painbrush.drawTree(340, 80);
         painbrush.drawTree(260, 115);
         painbrush.drawTree(200, 150);
-        painbrush.drawVehicle(pOvni1,pOvni2);
-
+        //painbrush.drawVehicle(pOvni1,pOvni2);
+        painbrush.drawVehicle();
         painbrush.drawSun(pSun);
     }
 

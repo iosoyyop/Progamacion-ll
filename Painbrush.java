@@ -83,7 +83,15 @@ public class Painbrush {
         g.fillOval(p.getX(),p.getY(), Config.OVNI_W, Config.OVNI_H);
         g.fillOval(p2.getX(), p2.getY(), Config.OVNI_W2, Config.OVNI_H2);
         g.setColor(Config.COLOR_OVNI2);
-        g.fillOval(300, 30, Config.OVNI_W-3, Config.OVNI_H-3);
-        g.fillOval(330, 20, Config.OVNI_W2-2, Config.OVNI_H2-5);
+        g.fillOval(Config.OVNI_X, Config.OVNI_Y, Config.OVNI_W-3, Config.OVNI_H-3);
+        g.fillOval(Config.OVNI_X2, Config.OVNI_Y2, Config.OVNI_W2-2, Config.OVNI_H2-5);
+    }
+    public void drawVehicle() {
+        g.setColor(Config.COLOR_OVNI);
+        g.fillOval(Config.OVNI_X, Config.OVNI_Y, Config.OVNI_W, Config.OVNI_H);
+        g.fillOval(Config.OVNI_X2, Config.OVNI_Y2, Config.OVNI_W2, Config.OVNI_H2);
+        g.setColor(Config.COLOR_OVNI2);
+        g.fillOval(Config.OVNI_X, Config.OVNI_Y, Config.OVNI_W-3, Config.OVNI_H-3);
+        g.fillOval(Config.OVNI_X2, Config.OVNI_Y2, Config.OVNI_W2-2, Config.OVNI_H2-5);
     }
 }
