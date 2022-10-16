@@ -20,11 +20,11 @@ public class MyCanvas extends JPanel implements ActionListener{
         setBackground(Config.COLOR_BG);
         Timer timer = new Timer(100,this);
         timer.start();
-        boats.add(new Boat(290, 265, -2,0, Color.PINK, 40,20));
+        boats.add(new Boat(290, 265, -2,0, Color.PINK, 40,20)); //El mar solo se dibuja si hay botes
         ovnis.add(new Ovni(290, 200,-4,-1, Color.BLACK,Config.OVNI_W,Config.OVNI_H));
         ovnis.add(new Ovni(10, 200,4,0, Color.WHITE,Config.OVNI_W,Config.OVNI_H));
         cars.add(new Car(10, 150, 4, 0, Color.RED, 40,20));
-        airplanes.add(new Airplane(200, 100, -10, 0, Color.ORANGE, 60, 10) );
+        airplanes.add(new Airplane(200, 100, -10, 0, Color.ORANGE, 60, 10));
         
     }
 
