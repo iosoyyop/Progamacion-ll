@@ -12,6 +12,10 @@ public class Car extends Vehicle{
     public void draw(Graphics g){
         g.setColor(this.getColor());
         g.fillRect(getDot().getX(), getDot().getY(), w, h);
+        g.fillRect(getDot().getX()+5, getDot().getY()-5, w-10, h-10);
+        g.setColor(Color.LIGHT_GRAY);
+        g.fillRect(getDot().getX()+2, getDot().getY()+3, w-5, h-7);
+        g.fillRect(getDot().getX()+6, getDot().getY()-3, w-13, h-13);
         g.setColor(Color.WHITE);
         double x1 = w, x2 = w;
         double y = h;

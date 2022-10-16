@@ -86,6 +86,7 @@ public class Paintbrush {
         g.fillOval(Config.OVNI_X, Config.OVNI_Y, Config.OVNI_W-3, Config.OVNI_H-3);
         g.fillOval(Config.OVNI_X2, Config.OVNI_Y2, Config.OVNI_W2-2, Config.OVNI_H2-5);
     }
+    
     public void drawVehicle() {
         g.setColor(Color.RED);
         g.fillOval(Config.OVNI_X-100, Config.OVNI_Y, Config.OVNI_W, Config.OVNI_H);
@@ -93,5 +94,8 @@ public class Paintbrush {
         g.setColor(Color.BLACK);
         g.fillOval(Config.OVNI_X-100, Config.OVNI_Y, Config.OVNI_W-3, Config.OVNI_H-3);
         g.fillOval(Config.OVNI_X2-100, Config.OVNI_Y2, Config.OVNI_W2-2, Config.OVNI_H2-5);
+    }
+
+    public void fillRect(int i, int j, int k, int l) {
     }
 }

@@ -10,15 +10,15 @@ public class Config {
     public static final Color COLOR_TREE = new Color(16, 46, 60);
     public static final Color COLOR_SUN = Color.YELLOW;
     public static final Color COLOR_OVNI = Color.PINK;
-    public static final Color COLOR_OVNI2 = Color.GRAY;
+    public static final Color COLOR_OVNI2 = Color.BLUE;
     public static final int SUN_SIZE = 50;
     public static final int SUN_STEP = 5;
     public static final int OVNI_W = 80;
-    public static final int OVNI_H = 20;
-    public static final int OVNI_W2 = 20;
-    public static final int OVNI_H2 = 15;
+    public static final int OVNI_H = 20; 
+    public static final int OVNI_W2 = 20; //-60 del valor original
+    public static final int OVNI_H2 = 15; //-5 del valor original
     public static final int OVNI_X = 300;
     public static final int OVNI_Y = 30 ;
-    public static final int OVNI_X2 = 330;
-    public static final int OVNI_Y2 = 20;
+    public static final int OVNI_X2 = 330; //+30 del valor original
+    public static final int OVNI_Y2 = 20; //-10 del valor original
 }

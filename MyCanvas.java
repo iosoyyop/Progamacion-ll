@@ -9,6 +9,9 @@ import javax.swing.JPanel;
 
 public class MyCanvas extends JPanel implements ActionListener{
     ArrayList<Car> cars = new ArrayList<Car>();
+    ArrayList<Ovni> ovnis = new ArrayList<Ovni>();
+    ArrayList<Boat> boats = new ArrayList<Boat>();
+    ArrayList<Airplane> airplanes = new ArrayList<Airplane>();
     Point pSun = new Point(Config.WINDOW_W-300, Config.WINDOW_H-300);
     Point pOvni1 = new Point(Config.OVNI_X, Config.OVNI_Y);
     Point pOvni2 = new Point(Config.OVNI_X2, Config.OVNI_Y2);
@@ -17,10 +20,12 @@ public class MyCanvas extends JPanel implements ActionListener{
         setBackground(Config.COLOR_BG);
         Timer timer = new Timer(100,this);
         timer.start();
-        cars.add(new Car(10, 250, 2, 0, Color.PINK, 60,30));
-        cars.add(new Car(10, 200, 3, 0, Color.YELLOW, 50, 25));
+        boats.add(new Boat(290, 265, -2,0, Color.PINK, 40,20));
+        ovnis.add(new Ovni(290, 200,-4,-1, Color.BLACK,Config.OVNI_W,Config.OVNI_H));
+        ovnis.add(new Ovni(10, 200,4,0, Color.WHITE,Config.OVNI_W,Config.OVNI_H));
         cars.add(new Car(10, 150, 4, 0, Color.RED, 40,20));
-        cars.add(new Car(10, 100, 5, 0, Color.ORANGE, 30, 15) );
+        airplanes.add(new Airplane(200, 100, -10, 0, Color.ORANGE, 60, 10) );
+        
     }
 
     @Override
@@ -39,10 +44,23 @@ public class MyCanvas extends JPanel implements ActionListener{
         paintbrush.drawTree(340, 80);
         paintbrush.drawTree(260, 115);
         paintbrush.drawTree(200, 150);
-        paintbrush.drawVehicle(pOvni1,pOvni2);
-        paintbrush.drawVehicle();
+        /*paintbrush.drawVehicle(pOvni1,pOvni2);
+        paintbrush.drawVehicle();*/
         paintbrush.drawSun(pSun);
         for(Car c : cars){
+            c.move();
+            c.draw(g);
+        }
+        for(Ovni c : ovnis){
+            c.move();
+            c.draw(g);
+        }
+        for(Boat c : boats){
+            c.move();
+            c.draw(g);
+        
+        }
+        for(Airplane c : airplanes){
             c.move();
             c.draw(g);
         }
