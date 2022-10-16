@@ -13,7 +13,7 @@ public class Ovni extends Vehicle{
         g.setColor(this.getColor());
         g.fillOval(getDot().getX(),getDot().getY(),w,h);
         g.fillOval(getDot().getX()+30,getDot().getY()-10,w-60,h-5);
-        g.setColor(Config.COLOR_OVNI2);
+        g.setColor(Color.BLACK);
         g.fillOval(getDot().getX(),getDot().getY(),w-3,h-3);
         g.fillOval(getDot().getX()+30,getDot().getY()-10,w-62,h-10);
 
