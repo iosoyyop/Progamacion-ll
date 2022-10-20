@@ -51,6 +51,7 @@ class Board extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         ArrayList<Point> body= new ArrayList<Point>();
+        body = snake.getBody();
         int HEAD=0;
         for(int i=body.size()-1;i>0;i--){
             int x=body.get(i-1).getX();
