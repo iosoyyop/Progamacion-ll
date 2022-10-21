@@ -19,4 +19,11 @@ class Point{
     public int getY(){
         return y;
     }
+    public Boolean areTheSame(Point p){
+        if(x==p.getX() && y==p.getY()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

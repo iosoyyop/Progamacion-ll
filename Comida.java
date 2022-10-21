@@ -23,7 +23,7 @@ class Food{
        p.setY((int)y); 
     }
     public void draw(Graphics g){
-        randomNewFood();
+        //randomNewFood();
         g.setColor(color);
         g.fillOval(p.getX()*Config.SIZE_SEG,p.getY()*Config.SIZE_SEG,size,size);
     }
