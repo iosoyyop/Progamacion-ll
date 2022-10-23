@@ -15,19 +15,23 @@ import javax.swing.WindowConstants;
 class Board extends JPanel implements ActionListener,KeyListener{
     Snake snake;
     Food food;
+    int count=0;
+    
     public static void main(String arg[]){
         Board b= new Board();
-        
+
     }
     public Board(){
+        
         setPreferredSize(new Dimension(Config.SIZE_WIN_W,Config.SIZE_WIN_H));
         setBackground(Color.BLACK);
-
-        JFrame f=new JFrame("snake");
+        
+        JFrame f=new JFrame("Snake");
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         f.addKeyListener(this);
         f.setSize(Config.SIZE_WIN_W, Config.SIZE_WIN_H);
         f.add(this);
+        
         f.pack();
         f.setResizable(false);
         f.setLocationRelativeTo(null);
@@ -45,7 +49,7 @@ class Board extends JPanel implements ActionListener,KeyListener{
         g.setColor(snake.getColor());
         ArrayList<Point> body= new ArrayList<Point>();
         body = snake.getBody();
-        int HEAD=0;
+        int HEAD=0,TAIL=body.size();
         for(int i=1;i<body.size();i++){
             Point p=body.get(i);
             g.setColor(snake.getColor()); 
@@ -54,23 +58,20 @@ class Board extends JPanel implements ActionListener,KeyListener{
         Point p=body.get(HEAD);
         g.setColor(snake.getColorHead()); 
         g.fillOval(p.getX()*Config.SIZE_SEG,p.getY()*Config.SIZE_SEG,Config.SIZE_SEG,Config.SIZE_SEG);
-    
-        /*for(Point p: snake.getBody()){
-            g.fillOval(p.getX()*Config.SIZE_SEG,p.getY()*Config.SIZE_SEG,Config.SIZE_SEG,Config.SIZE_SEG);
-        }
-        for(int i=0;i<Config.SIZE_WIN_W;i+=Config.SIZE_SEG){
-            g.drawLine(i, 0, i, Config.SIZE_WIN_H);
-        }
-        for(int j=0;j<Config.SIZE_WIN_H;j+=Config.SIZE_SEG){
-            g.drawLine(0,j ,Config.SIZE_WIN_W, j);
-        }*/
+        //tail
+        p=body.get(TAIL-1);
+        g.setColor(snake.getColorTail()); 
+        g.fillOval(p.getX()*Config.SIZE_SEG,p.getY()*Config.SIZE_SEG,Config.SIZE_SEG,Config.SIZE_SEG);
+       
         food.draw(g);
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         ArrayList<Point> body= new ArrayList<Point>();
         body = snake.getBody();
         int HEAD=0;
+
         for(int i=body.size()-1;i>0;i--){
             int x=body.get(i-1).getX();
             body.get(i).setX(x);
@@ -94,12 +95,46 @@ class Board extends JPanel implements ActionListener,KeyListener{
             x++;
             break;
         }
+        //efecto tunel
         body.get(HEAD).setY(y);
         body.get(HEAD).setX(x);
+        if( body.get(HEAD).getX()*Config.SIZE_SEG > Config.SIZE_WIN_W ){
+            body.get(HEAD).setX(0);
+
+        }
+        else if( body.get(HEAD).getY()*Config.SIZE_SEG > Config.SIZE_WIN_H ){
+            body.get(HEAD).setY(0);
+
+        }
+        else if( body.get(HEAD).getX()*Config.SIZE_SEG < HEAD  ){
+            body.get(HEAD).setX(Config.SIZE_WIN_W/Config.SIZE_SEG);
+        }
+        else if( body.get(HEAD).getY()*Config.SIZE_SEG < HEAD ){
+            body.get(HEAD).setY(Config.SIZE_WIN_H/Config.SIZE_SEG);
+        }
+        
+        //morderse
+        
+        for(int i=1;i<body.size();i++){
+            if(body.get(HEAD).areTheSame(body.get(i))){
+                snake.setLife(snake.getLife()-1);
+                System.out.println("vida:");
+                System.out.println(snake.getLife());
+                if(snake.getLife()<1){
+                    System.exit(0);
+                }
+            }
+        }
+        
+        //new body
         if(  body.get(HEAD).areTheSame(food.getPoint()) == true ){
             body.add(new Point(food.getPoint().getX(),food.getPoint().getY()));
             food.randomNewFood();
+            count+=10;
+            System.out.println("contador:");
+            System.out.println(count);
         }
+
         repaint();
     }
     @Override
@@ -124,7 +159,6 @@ class Board extends JPanel implements ActionListener,KeyListener{
             snake.setDir(snake.RIGHT);
             break;
         }
-        System.out.println(snake.getDir());
     }
     @Override
     public void keyReleased(KeyEvent e) {
