@@ -16,6 +16,8 @@ class Board extends JPanel implements ActionListener,KeyListener{
     Snake snake;
     Food food;
     int count=0;
+    int life=3;
+    Stadistics stadistics;
     
     public static void main(String arg[]){
         Board b= new Board();
@@ -27,6 +29,7 @@ class Board extends JPanel implements ActionListener,KeyListener{
         setBackground(Color.BLACK);
         
         JFrame f=new JFrame("Snake");
+        
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         f.addKeyListener(this);
         f.setSize(Config.SIZE_WIN_W, Config.SIZE_WIN_H);
@@ -46,6 +49,8 @@ class Board extends JPanel implements ActionListener,KeyListener{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        g.drawString("score: "+count,10,10);
+        g.drawString("lifes "+life,300,10);
         g.setColor(snake.getColor());
         ArrayList<Point> body= new ArrayList<Point>();
         body = snake.getBody();
@@ -98,11 +103,11 @@ class Board extends JPanel implements ActionListener,KeyListener{
         //efecto tunel
         body.get(HEAD).setY(y);
         body.get(HEAD).setX(x);
-        if( body.get(HEAD).getX()*Config.SIZE_SEG > Config.SIZE_WIN_W ){
+        if( body.get(HEAD).getX() > Config.SIZE_WIN_W/Config.SIZE_SEG -1 ){
             body.get(HEAD).setX(0);
 
         }
-        else if( body.get(HEAD).getY()*Config.SIZE_SEG > Config.SIZE_WIN_H ){
+        else if( body.get(HEAD).getY() > Config.SIZE_WIN_H/Config.SIZE_SEG -1 ){
             body.get(HEAD).setY(0);
 
         }
@@ -117,10 +122,11 @@ class Board extends JPanel implements ActionListener,KeyListener{
         
         for(int i=1;i<body.size();i++){
             if(body.get(HEAD).areTheSame(body.get(i))){
-                snake.setLife(snake.getLife()-1);
-                System.out.println("vida:");
-                System.out.println(snake.getLife());
-                if(snake.getLife()<1){
+                life--;
+                //System.out.println("vida:");
+                //System.out.println(snake.getLife());
+                snake= new Snake();
+                if(life<1){
                     System.exit(0);
                 }
             }
@@ -131,8 +137,8 @@ class Board extends JPanel implements ActionListener,KeyListener{
             body.add(new Point(food.getPoint().getX(),food.getPoint().getY()));
             food.randomNewFood();
             count+=10;
-            System.out.println("contador:");
-            System.out.println(count);
+            //System.out.println("contador:");
+            //System.out.println(count);
         }
 
         repaint();

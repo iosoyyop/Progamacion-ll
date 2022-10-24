@@ -3,7 +3,6 @@ import java.awt.Color;
 
 
 class Snake{
-    private int life;
     private Color color;
     private Color colorHead;
     private Color colorTail;
@@ -15,7 +14,7 @@ class Snake{
     public final int RIGHT=3;
     public  int dir;
     public Snake(){
-        life=3;
+
         body.add(new Point(5,2));
         body.add(new Point(4,2));
         body.add(new Point(3, 2));
@@ -46,10 +45,5 @@ class Snake{
     public Color getColorTail() {
         return colorTail;
     }
-    public int getLife() {
-        return life;
-    }
-    public void setLife(int life) {
-        this.life = life;
-    }
+
 }

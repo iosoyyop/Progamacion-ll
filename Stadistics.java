@@ -1,23 +1,23 @@
-class Count{
+class Stadistics{
 
     private int life;
     private int counter;
 
-    public Count(){
+    public Stadistics(){
         life=3;
         counter=0;
     }
 
-    public int getCount() {
+    public int getCounter() {
         return counter;
     }
     public int getLife() {
         return life;
     }
-    public void incrementCount() {
-        counter+=10;
+    public void setCounter(int counter) {
+    this.counter = counter;
     }
-    public void lostLife() {
-        life-=1;
+    public void setLife(int life) {
+    this.life = life;
     }
 }
